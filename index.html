@@ -2,136 +2,431 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love ❤️</title>
+
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Georgia,"Times New Roman",serif;background:#24000d;color:#fff}
-body{background:radial-gradient(circle at 50% 35%,#8d123e 0,#4c0624 42%,#190009 100%)}
-#app{width:100%;height:100%;position:relative}
-.page{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transform:scale(1.025);transition:opacity .8s ease,transform .9s ease;overflow:auto}
-.page.active{opacity:1;visibility:visible;transform:scale(1)}
-.card{width:min(900px,94vw);max-height:92vh;overflow:auto;text-align:center;padding:30px 22px;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,30,110,.06));border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 70px rgba(0,0,0,.35),inset 0 0 35px rgba(255,100,170,.08);backdrop-filter:blur(10px)}
-h1,h2{margin:8px 0 18px;text-shadow:0 0 20px rgba(255,150,200,.45)}
-p{line-height:1.7}
-.btn{border:0;border-radius:999px;padding:14px 25px;margin-top:20px;background:linear-gradient(90deg,#ff4f91,#ff174f);color:#fff;font-size:17px;font-weight:bold;box-shadow:0 8px 25px rgba(255,30,100,.3);cursor:pointer}
-.heart{width:205px;height:180px;margin:0 auto 25px;position:relative;filter:drop-shadow(0 0 22px #ff2f72);animation:beat 1.15s infinite}
-.heart:before,.heart:after{content:"";position:absolute;top:0;width:105px;height:165px;border-radius:105px 105px 0 0;background:linear-gradient(160deg,#ff6b9d,#e90045);box-shadow:inset 0 0 25px rgba(255,255,255,.18)}
-.heart:before{left:100px;transform:rotate(45deg);transform-origin:0 100%}
-.heart:after{left:0;transform:rotate(-45deg);transform-origin:100% 100%}
-.heartText{position:absolute;z-index:2;inset:55px 0 auto;font-size:21px;font-weight:normal}
-.heartText b{font-size:28px}
-.letter{font-size:78px;cursor:pointer;display:inline-block;animation:float 2.2s ease-in-out infinite;filter:drop-shadow(0 0 14px #ff79a9)}
-.guide{font-size:14px;opacity:.85}
-.list{text-align:left;max-width:650px;margin:15px auto;font-size:17px}
-.list div{margin:9px 0}
-.screens,.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;margin:20px 0}
-.placeholder{min-height:220px;border-radius:20px;border:1px dashed rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;padding:15px;background:rgba(255,255,255,.05);color:#ffd5e5}
-.photo{min-height:260px}
-.final{font-size:19px}
-.final strong{font-size:24px}
-#musicBtn{position:fixed;right:14px;top:14px;z-index:100;border:1px solid rgba(255,255,255,.35);background:rgba(70,0,30,.55);color:#fff;border-radius:50%;width:46px;height:46px;font-size:19px;cursor:pointer;backdrop-filter:blur(8px)}
-#musicHint{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:90;background:rgba(40,0,18,.7);padding:8px 13px;border-radius:20px;font:13px Arial,sans-serif;opacity:.9}
-#transition{position:fixed;inset:0;background:radial-gradient(circle,#ff3e85,#2b0012 70%);z-index:80;opacity:0;pointer-events:none;transition:opacity .35s ease}
-.spark{position:fixed;width:4px;height:4px;background:#fff;border-radius:50%;opacity:.7;animation:rise linear infinite;pointer-events:none}
-@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes rise{from{transform:translateY(105vh);opacity:0}20%{opacity:.8}to{transform:translateY(-10vh);opacity:0}}
-@media(max-width:600px){.page{padding:14px}.card{padding:24px 16px;max-height:94vh}.heart{transform:scale(.88);margin-bottom:5px}.list{font-size:16px}.screens,.photos{grid-template-columns:1fr}.placeholder{min-height:300px}}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#ff4f81);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow-x:hidden;
+}
+
+.page{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  animation:fade 0.8s ease;
+}
+
+.card{
+  width:100%;
+  max-width:700px;
+  background:rgba(255,255,255,0.16);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:30px;
+  padding:30px 22px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+h1,h2{
+  text-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
+p{
+  line-height:1.7;
+}
+
+.btn{
+  border:none;
+  padding:14px 24px;
+  border-radius:30px;
+  background:white;
+  color:#ff477e;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.btn:active{
+  transform:scale(.96);
+}
+
+.heart{
+  width:180px;
+  height:180px;
+  margin:0 auto 25px;
+  position:relative;
+  transform:rotate(-45deg);
+  background:#ff174f;
+  animation:pulse 1.5s infinite;
+  border-radius:20px;
+}
+
+.heart:before,
+.heart:after{
+  content:"";
+  width:180px;
+  height:180px;
+  position:absolute;
+  background:#ff174f;
+  border-radius:50%;
+}
+
+.heart:before{
+  top:-90px;
+  left:0;
+}
+
+.heart:after{
+  left:90px;
+  top:0;
+}
+
+.heartText{
+  position:absolute;
+  width:250px;
+  left:-35px;
+  top:65px;
+  z-index:2;
+  transform:rotate(45deg);
+  font-size:20px;
+  color:white;
+  font-weight:bold;
+}
+
+.heartText small{
+  font-size:13px;
+}
+
+.letter{
+  font-size:80px;
+  cursor:pointer;
+  animation:float 2s infinite ease-in-out;
+}
+
+.list{
+  text-align:left;
+  margin:20px 0;
+}
+
+.list div{
+  margin:9px 0;
+  padding:10px 15px;
+  background:rgba(255,255,255,0.12);
+  border-radius:15px;
+}
+
+.screens{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.placeholder{
+  min-height:150px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:rgba(255,255,255,0.12);
+  border:2px dashed rgba(255,255,255,0.5);
+  border-radius:18px;
+  padding:15px;
+}
+
+.final{
+  padding:40px 25px;
+}
+
+.guide{
+  font-size:13px;
+  opacity:.9;
+}
+
+@keyframes fade{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes pulse{
+  0%,100%{
+    transform:rotate(-45deg) scale(1);
+  }
+  50%{
+    transform:rotate(-45deg) scale(1.08);
+  }
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+@media(max-width:600px){
+  .screens{
+    grid-template-columns:1fr;
+  }
+
+  .card{
+    padding:25px 18px;
+  }
+}
 </style>
 </head>
-<body>
-<div id="app"></div>
-<div id="transition"></div>
-<button id="musicBtn" aria-label="Music">♫</button>
-<div id="musicHint">Tap anywhere once if your browser blocks the music ❤️</div>
 
-<audio id="music" preload="auto" loop playsinline>
+<body>
+
+<div id="app"></div>
+
+<audio id="music" loop>
   <source src="perfect.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+
 const pages = [
-`<div class="card"><div class="heart"><div class="heartText">hey my <b>LOVE</b> 💖<br><small>This is only for u ❣️</small></div></div><p><b>Open with your headphones 🎧 on</b></p><button class="btn" onclick="go(1)">Yes I am ready</button></div>`,
 
-`<div class="card"><h1>Happy Birthday my baby 💘</h1><p>You deserve a day as beautiful as you are. ❤️</p><div class="letter" onclick="go(2)">💌</div><p class="guide">♡ Tap the letter to open it ♡</p></div>`,
+`<div class="card">
+<div class="heart">
+<div class="heartText">
+hey my <b>LOVE</b> 💖<br>
+<small>This is only for u ❣️</small>
+</div>
+</div>
 
-`<div class="card"><h2>Hey my love 😘</h2>
-<p>Today is your day 💗. I am just a part of this day… maybe a big part 🫠.</p>
-<p>You came into my life like a spring season and made me feel complete… You know, I smile like an idiot whenever I see you, darling 💘. It’s like I adore you endlessly without even realising it…</p>
-<p>You have become my favourite chapter of my life ♥️.</p>
+<p><b>Open with your headphones 🎧 on</b></p>
+
+<button class="btn" onclick="go(1)">
+Yes I am ready
+</button>
+</div>`,
+
+`<div class="card">
+
+<h1>Happy Birthday my baby 💘</h1>
+
+<p>You deserve a day as beautiful as you are. ❤️</p>
+
+<div class="letter" onclick="go(2)">💌</div>
+
+<p class="guide">♡ Tap the letter to open it ♡</p>
+
+</div>`,
+
+`<div class="card">
+
+<h2>Hey my love 😘</h2>
+
+<p>
+Today is your day 💗. I am just a part of this day… maybe a big part 🫠.
+</p>
+
+<p>
+You came into my life like a spring season and made me feel complete…
+You know, I smile like an idiot whenever I see you, darling 💘.
+It’s like I adore you endlessly without even realising it…
+</p>
+
+<p>
+You have become my favourite chapter of my life ♥️.
+</p>
+
 <div class="list">
-<div>I love your smile.</div><div>I love your confidence.</div><div>I love how you handle every situation perfectly.</div><div>I love your character.</div><div>I love your attitude.</div><div>I love how you share your problems with me.</div><div>I love how you care for your parents.</div><div>I love your discipline.</div><div>I love your patience.</div><div>I love how you comfort me.</div><div>I love how you adore me.</div><div>I love how you care for me.</div><div>I love how you love me.</div>
-</div><p>It’s like… I love everything about you.</p><p>And just always…</p><h2>I LOVE YOU ❤️</h2>
-<button class="btn" onclick="go(3)">♡ I want more ♡</button></div>`,
 
-`<div class="card"><h2>Ohh… my darling wants more 🤗</h2><p>Then come here… 💖<br>Here are some of the things you’ve said to me that I’ll never forget for the rest of my life. ❤️</p><div class="screens">
-${Array.from({length:10},(_,i)=>`<div class="placeholder">Screenshot ${i+1}<br><small>Replace this with your chat screenshot</small></div>`).join('')}</div>
-<button class="btn" onclick="go(4)">♡ There’s more… ♡</button></div>`,
+<div>I love your smile.</div>
+<div>I love your confidence.</div>
+<div>I love how you handle every situation perfectly.</div>
+<div>I love your character.</div>
+<div>I love your attitude.</div>
+<div>I love how you share your problems with me.</div>
+<div>I love how you care for your parents.</div>
+<div>I love your discipline.</div>
+<div>I love your patience.</div>
+<div>I love how you comfort me.</div>
+<div>I love how you adore me.</div>
+<div>I love how you care for me.</div>
+<div>I love how you love me.</div>
 
-`<div class="card"><h2>Ohh darling… ❤️</h2>
-<p>I could never forget the butterflies you gave me. 💕<br>The things you did to me… the way you made me feel… 🫠</p>
-<p>And that online rizz…<br>OMG… Ufff 🔥😮‍💨</p>
-<p>Even now, I get butterflies just by remembering those moments, darling. 🦋❤️</p>
-<p>You have this way of making my heart race without even being here… and somehow, just the thought of you is enough to make me smile like an idiot. 🥹💗</p>
-<p>You’re my favourite kind of distraction…<br>my favourite person to think about…<br>and definitely my favourite reason to blush. 😏💕</p>
-<p><b>I love you… sooooooooooooooooo much. ❤️</b></p>
-<button class="btn" onclick="go(5)">♡ One last thing ♡</button></div>`,
+</div>
 
-`<div class="card"><h2>Some memories of us ❤️</h2><p>Every picture holds a little piece of my heart. 💕</p><div class="photos">
-${Array.from({length:6},(_,i)=>`<div class="placeholder photo">Photo ${i+1}<br><small>Replace this with your photo</small></div>`).join('')}</div>
-<button class="btn" onclick="go(6)">♡ Finish the surprise ♡</button></div>`,
+<p>It’s like… I love everything about you.</p>
 
-`<div class="card final"><h2>My love… ❤️</h2>
-<p>This little website may end here,<br>but my love for you never will. 💕</p>
-<p>Every little thing you saw here was just a small effort from me to make you smile on your special day. 🥹💗</p>
-<p>I hope these little moments made you feel even a tiny bit of how special you are to me. ❤️</p>
-<p>Once again…</p><h2>Happy Birthday, my darling! 🎂💓</h2>
-<p>May your smile always stay this beautiful,<br>and may I always have a reason to be the one smiling because of you. 🫠💕</p>
-<p><strong>I love you…<br>today, tomorrow, and always. ❤️</strong></p>
-<p>Made with love, just for you ❤️</p></div>`
+<p>And just always…</p>
+
+<h2>I LOVE YOU ❤️</h2>
+
+<button class="btn" onclick="go(3)">
+♡ I want more ♡
+</button>
+
+</div>`,
+
+`<div class="card">
+
+<h2>Ohh… my darling wants more 🤗</h2>
+
+<p>
+Then come here… 💖<br>
+Here are some of the things you’ve said to me that I’ll never forget for the rest of my life. ❤️
+</p>
+
+<div class="screens">
+
+${Array.from({length:10},(_,i)=>
+`<div class="placeholder">
+Screenshot ${i+1}<br>
+<small>Replace this with your chat screenshot</small>
+</div>`
+).join('')}
+
+</div>
+
+<button class="btn" onclick="go(4)">
+♡ There’s more… ♡
+</button>
+
+</div>`,
+
+`<div class="card">
+
+<h2>Ohh darling… ❤️</h2>
+
+<p>
+I could never forget the butterflies you gave me. 💕<br>
+The things you did to me… the way you made me feel… 🫠
+</p>
+
+<p>
+And that online rizz…<br>
+OMG… Ufff 🔥😮‍💨
+</p>
+
+<p>
+Even now, I get butterflies just by remembering those moments, darling. 🦋❤️
+</p>
+
+<p>
+You have this way of making my heart race without even being here…
+and somehow, just the thought of you is enough to make me smile like an idiot. 🥹💗
+</p>
+
+<p>
+You’re my favourite kind of distraction…<br>
+my favourite person to think about…<br>
+and definitely my favourite reason to blush. 😏💕
+</p>
+
+<p>
+<b>I love you… sooooooooooooooooo much. ❤️</b>
+</p>
+
+<button class="btn" onclick="go(5)">
+♡ One last thing ♡
+</button>
+
+</div>`,
+
+`<div class="card final">
+
+<h2>My love… ❤️</h2>
+
+<p>
+This little website may end here,<br>
+but my love for you never will. 💕
+</p>
+
+<p>
+Every little thing you saw here was just a small effort from me
+to make you smile on your special day. 🥹💗
+</p>
+
+<p>
+I hope these little moments made you feel even a tiny bit
+of how special you are to me. ❤️
+</p>
+
+<p>Once again…</p>
+
+<h2>Happy Birthday, my darling! 🎂💓</h2>
+
+<p>
+May your smile always stay this beautiful,<br>
+and may I always have a reason to be the one smiling because of you. 🫠💕
+</p>
+
+<p>
+<strong>
+I love you…<br>
+today, tomorrow, and always. ❤️
+</strong>
+</p>
+
+<p>
+Made with love, just for you ❤️
+</p>
+
+</div>`
+
 ];
 
-const app=document.getElementById('app');
-pages.forEach((p,i)=>{const el=document.createElement('section');el.className='page'+(i===0?' active':'');el.id='page'+i;el.innerHTML=p;app.appendChild(el)});
-for(let i=0;i<26;i++){const s=document.createElement('i');s.className='spark';s.style.left=Math.random()*100+'%';s.style.animationDuration=(5+Math.random()*7)+'s';s.style.animationDelay=(-Math.random()*10)+'s';document.body.appendChild(s)}
+let current = 0;
 
-let current=0;
-const audio=document.getElementById('music');
-const hint=document.getElementById('musicHint');
-const transition=document.getElementById('transition');
-
-async function startMusic(){
-  try{
-    audio.volume=0.82;
-    await audio.play();
-    hint.style.display='none';
-  }catch(e){
-    hint.style.display='block';
-  }
+function render(){
+  document.getElementById("app").innerHTML =
+    `<div class="page">${pages[current]}</div>`;
 }
-function unlockMusic(){startMusic();window.removeEventListener('pointerdown',unlockMusic);window.removeEventListener('keydown',unlockMusic)}
-window.addEventListener('pointerdown',unlockMusic,{once:true});
-window.addEventListener('keydown',unlockMusic,{once:true});
-document.addEventListener('DOMContentLoaded',startMusic);
-
-document.getElementById('musicBtn').onclick=async()=>{
-  if(audio.paused){await startMusic()}else{audio.pause()}
-};
-audio.addEventListener('play',()=>document.getElementById('musicBtn').textContent='♫');
-audio.addEventListener('pause',()=>document.getElementById('musicBtn').textContent='🔇');
 
 function go(n){
-  if(n<0||n>=pages.length)return;
-  startMusic();
-  transition.style.opacity='1';
-  setTimeout(()=>{
-    document.querySelector('.page.active').classList.remove('active');
-    document.getElementById('page'+n).classList.add('active');
-    current=n;
-    transition.style.opacity='0';
-  },280);
+  current = n;
+  render();
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
+
+const music = document.getElementById("music");
+
+function startMusic(){
+  music.play().catch(()=>{});
+}
+
+document.addEventListener("click",startMusic,{once:true});
+document.addEventListener("touchstart",startMusic,{once:true});
+document.addEventListener("keydown",startMusic,{once:true});
+
+render();
+
 </script>
+
 </body>
 </html>
